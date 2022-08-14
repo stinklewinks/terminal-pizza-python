@@ -4,13 +4,58 @@ from Pizza import Pizza
 # I want to add a menu a user can navigate through
 # I want to add a list of toppings a user can choose from
 # I want to add a delivery system
+size_choices = ["small", "medium", "large", "x-large"]
+style_choices = ["pan", "hand-tossed", "thin crust"]
+
+print("""Welcome to PizzaPy Orderator!!
+
+Here you can build your own pizza, 
+Browse our pies,
+or check out our deals!
+
+""")
+print("Let's determine the size of the pizza")
+
+
+def choose_size():
+    counter = 0
+    for size in size_choices:
+        print(str(counter + 1) + ". " + size.title())
+        counter += 1
+
 
 pepperoni = Pizza()
 
-pepperoni.add_topping("Pepperoni")
-pepperoni.pizza_size("Large")
-pepperoni.cook_time = "Well Done"
-pepperoni.add_cheese("Extra Cheese")
-pepperoni.crust_type("Butter Garlic")
-
 print("This is what your pizza looks like: " + str(pepperoni.toppings))
+
+choose_size()
+size_choice = int(input("What size would you like your pizza to be? (Choose options 1-4): "))
+pepperoni.add_topping(size_choices[size_choice - 1])
+print(pepperoni.toppings)
+
+print("Would you like to add extra cheese?")
+
+user_choice = 'y'
+while user_choice == 'y':
+    cheese_choice = input("1.Yes or 2.No? (Select 1 or 2): ")
+    if cheese_choice == 1:
+        pepperoni.add_cheese("Extra Cheese")
+    else:
+        pepperoni.add_cheese("Regular Cheese")
+    user_choice = input("Would you like to add more cheeses? y or n: ")
+
+print("What style would you like your pizza to be?")
+
+
+def choose_style():
+    counter = 0
+    for style in style_choices:
+        print(str(counter + 1) + ". " + style.title())
+        counter += 1
+
+
+choose_style()
+style_choice = int(input("Please choose 1-4: "))
+pepperoni.toppings.append(style_choices[style_choice - 1])
+print("This is your pizza so far: ")
+print(pepperoni.toppings)
