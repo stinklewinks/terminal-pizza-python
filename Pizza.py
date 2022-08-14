@@ -2,6 +2,7 @@ class Pizza:
     toppings = []
     size = "small"
     cook_time = "Normal"
+    pricing = {"Small": 7, "Medium": 8, "Large": 9, "X-Large": 11}
 
     def __init__(self):
         print("Time to build a pizza!")

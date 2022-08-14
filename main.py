@@ -1,4 +1,5 @@
 from Pizza import Pizza
+from Order import Order
 
 # This is a demo pizza app
 # I want to add a menu a user can navigate through
@@ -14,6 +15,10 @@ Browse our pies,
 or check out our deals!
 
 """)
+new_order = Order()
+status = new_order.status[0]
+print(status)
+pepperoni = Pizza()
 print("Let's determine the size of the pizza")
 
 
@@ -23,10 +28,6 @@ def choose_size():
         print(str(counter + 1) + ". " + size.title())
         counter += 1
 
-
-pepperoni = Pizza()
-
-print("This is what your pizza looks like: " + str(pepperoni.toppings))
 
 choose_size()
 size_choice = int(input("What size would you like your pizza to be? (Choose options 1-4): "))
@@ -55,7 +56,11 @@ def choose_style():
 
 
 choose_style()
-style_choice = int(input("Please choose 1-4: "))
+style_choice = int(input("Please choose 1-3: "))
 pepperoni.toppings.append(style_choices[style_choice - 1])
 print("This is your pizza so far: ")
 print(pepperoni.toppings)
+new_order.add_to_cart(pepperoni)
+status = new_order.status[1]
+print(status)
+print("It's time for payment.")
