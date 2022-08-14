@@ -1,16 +1,16 @@
-# This is a sample Python script.
+from Pizza import Pizza
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+# This is a demo pizza app
+# I want to add a menu a user can navigate through
+# I want to add a list of toppings a user can choose from
+# I want to add a delivery system
 
+pepperoni = Pizza()
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+pepperoni.add_topping("Pepperoni")
+pepperoni.pizza_size("Large")
+pepperoni.cook_time = "Well Done"
+pepperoni.add_cheese("Extra Cheese")
+pepperoni.crust_type("Butter Garlic")
 
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+print("This is what your pizza looks like: " + str(pepperoni.toppings))
