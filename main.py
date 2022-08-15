@@ -1,5 +1,7 @@
 from Pizza import Pizza
+from Toppings import Toppings
 from Order import Order
+from datetime import datetime
 
 # This is a demo pizza app
 # I want to add a menu a user can navigate through
@@ -7,7 +9,8 @@ from Order import Order
 # I want to add a delivery system
 size_choices = ["small", "medium", "large", "x-large"]
 style_choices = ["pan", "hand-tossed", "thin crust"]
-
+current_date = datetime.now()
+print(current_date)
 print("""Welcome to PizzaPy Orderator!!
 
 Here you can build your own pizza, 
@@ -58,9 +61,12 @@ def choose_style():
 choose_style()
 style_choice = int(input("Please choose 1-3: "))
 pepperoni.toppings.append(style_choices[style_choice - 1])
+
+print("Let's add some toppings!")
+print(Toppings.toppings["meats"])
+
 print("This is your pizza so far: ")
 print(pepperoni.toppings)
-new_order.add_to_cart(pepperoni)
-status = new_order.status[1]
-print(status)
-print("It's time for payment.")
+
+
+# Order starts cooking
