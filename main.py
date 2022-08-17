@@ -2,6 +2,7 @@ from Pizza import Pizza
 from Toppings import Toppings
 from Order import Order
 from datetime import datetime
+import time
 
 # This is a demo pizza app
 # I want to add a menu a user can navigate through
@@ -11,13 +12,15 @@ size_choices = ["small", "medium", "large", "x-large"]
 style_choices = ["pan", "hand-tossed", "thin crust"]
 current_date = datetime.now()
 print(current_date)
-print("""Welcome to PizzaPy Orderator!!
+print("Welcome to PizzaPy Orderator!!")
 
-Here you can build your own pizza, 
-Browse our pies,
-or check out our deals!
+time.sleep(1)
+print("Here you can build your own pizza,")
+time.sleep(1)
+print("Browse our pies,")
+time.sleep(1)
+print("or check out our deals!")
 
-""")
 new_order = Order()
 status = new_order.status[0]
 print(status)
@@ -63,8 +66,33 @@ style_choice = int(input("Please choose 1-3: "))
 pepperoni.toppings.append(style_choices[style_choice - 1])
 
 print("Let's add some toppings!")
-print(Toppings.toppings["meats"])
 
+
+def choose_meats():
+    counter = 0
+    for meat in Toppings.toppings["meats"]:
+        print(str(counter + 1) + ". " + meat)
+        counter += 1
+
+
+def meat_loop():
+    meat_switch = 'y'
+    while meat_switch == 'y':
+        choose_meats()
+        meat_choice = int(input("Please choose your toppings (Please select the # of your topping: "))
+        pepperoni.toppings.append(Toppings.toppings["meats"][meat_choice - 1])
+        meat_switch = input("Would you like to add more toppings? y/n: ")
+        if meat_switch != 'y':
+            print("That's not the right character. Please try again. Choose y or n")
+            meat_switch = input("Would you like to add more toppings? y/n: ")
+        elif meat_switch != 'n':
+            print("That's not the right character. Please try again. Choose y or n")
+            meat_switch = input("Would you like to add more toppings? y/n: ")
+        else:
+            print(pepperoni.toppings)
+
+
+meat_loop()
 print("This is your pizza so far: ")
 print(pepperoni.toppings)
 
